@@ -1,0 +1,76 @@
+# @mostajs/orm-samples — fiche LLM
+> Runnable samples covering 100% of @mostajs/orm's public API. Copy-paste install per feature.
+
+- Version: 0.1.0 · Licence: AGPL-3.0-or-later · Auteur: Dr Hamid MADANI <drmdh@msn.com>
+- Chemin: mostajs/mosta-orm-samples · Statut: Lot 1 livré (samples 01-05)
+
+## RÔLE
+Pour chaque export documenté dans le llms.txt de @mostajs/orm, ce module fournit
+au moins un sample runnable (~30-100 LOC) démontrant l'usage concret. Substitut
+public des tests internes (qui restent propriétaires entreprise). Aide à la
+découverte de l'API par l'exemple, sans framework parasite.
+
+## INSTALLATION
+npm install @mostajs/orm-samples --save-dev
+
+# OU via CLI directe :
+npx @mostajs/orm-samples list
+npx @mostajs/orm-samples scaffold <feature> [dest]
+
+## CLI
+- `mostajs-orm-samples list [--json]` : liste les samples disponibles
+- `mostajs-orm-samples scaffold <feature> [dest]` : copie le sample dans dest (default ./my-<feature>-app)
+- `mostajs-orm-samples check <feature>` : liste les ressources externes nécessaires
+- `mostajs-orm-samples help [feature]` : aide globale ou par sample
+
+## SAMPLES LIVRÉS — Lot 1 (Fondamentaux)
+- 01-quickstart-sqlite : createConnection + BaseRepository + create + findOne + EntitySchema + FieldType + FieldDef
+- 02-multi-dialect-switch : getConfigFromEnv + DialectType + ConnectionConfig + DIALECT_CONFIGS + getSupportedDialects + getDialectConfig
+- 03-isolated-connections : createIsolatedDialect + registerNamedConnection + getNamedConnection + listNamedConnections + clearNamedConnections + piège getDialect singleton
+- 04-schema-registry : registerSchema + registerSchemas + getSchema + getSchemaByCollection + getAllSchemas + getEntityNames + hasSchema + validateSchemas + clearRegistry
+- 05-types-cles-entity-schema : EntitySchema exhaustif + FieldType (string/text/number/boolean/date/json/array) + FieldDef (required/unique/sparse/default/enum/lowercase/trim/arrayOf) + IndexDef + IndexType + softDelete + discriminator + timestamps
+
+## SAMPLES À VENIR — Lots 2-5
+- Lot 2 (CRUD & queries) : findById polymorphique, FilterOperator complet, aggregate pipeline
+- Lot 3 (Relations & lifecycle) : RelationDef + lazy/eager + migration + soft-delete + audit + tx
+- Lot 4 (Plugins & sous-modules) : IPlugin + /register + /bridge JDBC
+- Lot 5 (Validator & erreurs) : validator + auto-fix + erreurs + EntityService + config + lifecycle
+
+## PATTERN INSTALL UTILISATEUR (par sample)
+
+```bash
+# 1. Install package (cwd ne compte pas — temporaire)
+mkdir tmp && cd tmp && npm init -y && npm install @mostajs/orm-samples
+
+# 2. Copy the scaffold to your project location
+cp -r node_modules/@mostajs/orm-samples/examples/<feature> ~/my-<feature>-app
+cd ~/my-<feature>-app
+rm -rf ../tmp
+
+# 3. Install external resources éventuelles
+sudo apt install <package>           # ou : brew install <package>
+
+# 4. Launch (auto-handles npm install)
+./<feature>.sh
+```
+
+## STRUCTURE D'UN SAMPLE
+- README.md : pitch + commande install + commande run + sortie attendue
+- package.json : standalone (dépend de @mostajs/orm)
+- app.ts : main code, ~30-100 LOC, focus ORM only
+- schemas/ : 1-3 schémas types
+- <feature>.sh : script de lancement (npm install + run + smoke assert)
+- .env.example : variables minimales
+
+## DÉPEND DE
+- @mostajs/orm ≥ 2.1.0 (peer)
+- Par sample : driver SGBD selon dialect (better-sqlite3 par défaut, pg/mysql2 en alternative)
+
+## PIÈGES
+- Les samples utilisent SQLite par défaut (zéro install) ; pour Postgres/MySQL, editer le .env.example commenté.
+- Chaque sample crée sa DB tmp à la racine du sample (auto-cleanup avant chaque run).
+- Le scaffold copie un répertoire entier — penser à supprimer le tmp d'install après.
+
+## RÉFÉRENCES
+- README.md · CHANGELOG.md
+- @mostajs/orm package (peer) — voir son llms.txt pour la liste exhaustive des exports

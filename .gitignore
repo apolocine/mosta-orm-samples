@@ -1,0 +1,18 @@
+node_modules/
+dist/
+*.tgz
+*.log
+.env
+.env.local
+.DS_Store
+
+# Sample-local runtime artefacts
+examples/**/node_modules/
+examples/**/*.db
+examples/**/*.sqlite
+examples/**/dist/
+
+# Editor
+.vscode/
+.idea/
+*.swp
