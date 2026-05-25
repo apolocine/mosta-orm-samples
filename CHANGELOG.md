@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] — 2026-05-25
+
+### Added — Lot 2 : CRUD & queries (4 samples)
+
+- **`06-base-repository-crud`** — 15 méthodes du `BaseRepository` en séquence :
+  read (`findAll`, `findOne`, `findById`, `count`, `distinct`, `search`),
+  write (`create`, `update`, `updateMany`, `upsert`), delete (`delete`,
+  `deleteMany`), atomic (`increment`, `addToSet`, `pull`).
+
+- **`07-filter-query-mongodb-like`** — 12 opérateurs `FilterOperator` :
+  `$eq`, `$ne`, `$gt`, `$gte`, `$lt`, `$lte`, `$in`, `$nin`, `$regex`,
+  `$exists`, `$or`, `$and`. Plus `QueryOptions` complets : `sort`, `skip`,
+  `limit`, `select`. `SortDirection`.
+
+- **`08-aggregate-pipeline`** — Pipeline d'agrégation MongoDB-style :
+  `$match`, `$group`, `$sort`, `$limit`, `AggregateAccumulator` (`$sum`).
+  **Requiert MongoDB** (le pipeline `$group` avec expression `'$field'`
+  est natif Mongo ; SQL non supporté en V1).
+
+- **`09-findbyid-polymorphic`** — 4 formes de `findById` (string PK,
+  `{id}`, natural key single, composite natural key) + `extractRelId`
+  helper + `OrmIntrospectionError` typée (avec `schemaName` /
+  `availableFields`). La vitrine du polymorphisme 2.0.
+
+### Critère sortie Lot 2
+
+Tout `BaseRepository` est démontré (15/18 méthodes — `findByIdWithRelations`
+et `findWithRelations` sont dans le Lot 3 avec les relations).
+
+**Author** : Dr Hamid MADANI <drmdh@msn.com>
+
 ## [0.1.0] — 2026-05-25
 
 ### Added — Lot 1 : Fondamentaux (5 samples)

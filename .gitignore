@@ -9,7 +9,11 @@ dist/
 # Sample-local runtime artefacts
 examples/**/node_modules/
 examples/**/*.db
+examples/**/*.db-shm
+examples/**/*.db-wal
 examples/**/*.sqlite
+examples/**/*.sqlite-shm
+examples/**/*.sqlite-wal
 examples/**/dist/
 
 # Editor

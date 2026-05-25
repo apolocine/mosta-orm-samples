@@ -49,7 +49,9 @@ sudo apt install <package>           # ou : brew install <package>
 ./<feature>.sh
 ```
 
-## Catalogue (Lot 1 — Fondamentaux)
+## Catalogue (Lots 1 & 2 — Fondamentaux + CRUD & queries)
+
+### Lot 1 — Fondamentaux
 
 | # | Sample | Démontre |
 |---|---|---|
@@ -59,9 +61,17 @@ sudo apt install <package>           # ou : brew install <package>
 | 04 | [`04-schema-registry`](examples/04-schema-registry/) | Registre global `registerSchema`/`getSchema`/`validateSchemas`/`clearRegistry` |
 | 05 | [`05-types-cles-entity-schema`](examples/05-types-cles-entity-schema/) | Tous les `FieldType`/`FieldDef`/`IndexDef` + `softDelete` + `discriminator` |
 
-Lots suivants (cf. ROADMAP propriétaire entreprise) : CRUD & queries (06-09),
-Relations & lifecycle (10-15), Plugins & sous-modules (16-18), Validator
-& erreurs (19-25).
+### Lot 2 — CRUD & queries
+
+| # | Sample | Démontre |
+|---|---|---|
+| 06 | [`06-base-repository-crud`](examples/06-base-repository-crud/) | 15 méthodes `BaseRepository` : create/read/update/delete + atomic (increment/addToSet/pull) + upsert + search/distinct |
+| 07 | [`07-filter-query-mongodb-like`](examples/07-filter-query-mongodb-like/) | 12 opérateurs `FilterOperator` (`$eq`/`$ne`/`$gt`/`$gte`/`$lt`/`$lte`/`$in`/`$nin`/`$regex`/`$exists`/`$or`/`$and`) + `QueryOptions` complets |
+| 08 | [`08-aggregate-pipeline`](examples/08-aggregate-pipeline/) | Pipeline d'agrégation `$match`+`$group`+`$sort`+`$limit` (MongoDB-only) |
+| 09 | [`09-findbyid-polymorphic`](examples/09-findbyid-polymorphic/) | 4 formes de `findById` (string / `{id}` / natural key / composite) + `extractRelId` + `OrmIntrospectionError` |
+
+Lots suivants (cf. ROADMAP propriétaire entreprise) : Relations & lifecycle
+(10-15), Plugins & sous-modules (16-18), Validator & erreurs (19-25).
 
 ## CLI `mostajs-orm-samples`
 

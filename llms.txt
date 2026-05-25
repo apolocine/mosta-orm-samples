@@ -1,8 +1,8 @@
 # @mostajs/orm-samples — fiche LLM
 > Runnable samples covering 100% of @mostajs/orm's public API. Copy-paste install per feature.
 
-- Version: 0.1.0 · Licence: AGPL-3.0-or-later · Auteur: Dr Hamid MADANI <drmdh@msn.com>
-- Chemin: mostajs/mosta-orm-samples · Statut: Lot 1 livré (samples 01-05)
+- Version: 0.2.0 · Licence: AGPL-3.0-or-later · Auteur: Dr Hamid MADANI <drmdh@msn.com>
+- Chemin: mostajs/mosta-orm-samples · Statut: Lots 1 & 2 livrés (samples 01-09)
 
 ## RÔLE
 Pour chaque export documenté dans le llms.txt de @mostajs/orm, ce module fournit
@@ -30,8 +30,13 @@ npx @mostajs/orm-samples scaffold <feature> [dest]
 - 04-schema-registry : registerSchema + registerSchemas + getSchema + getSchemaByCollection + getAllSchemas + getEntityNames + hasSchema + validateSchemas + clearRegistry
 - 05-types-cles-entity-schema : EntitySchema exhaustif + FieldType (string/text/number/boolean/date/json/array) + FieldDef (required/unique/sparse/default/enum/lowercase/trim/arrayOf) + IndexDef + IndexType + softDelete + discriminator + timestamps
 
-## SAMPLES À VENIR — Lots 2-5
-- Lot 2 (CRUD & queries) : findById polymorphique, FilterOperator complet, aggregate pipeline
+## SAMPLES LIVRÉS — Lot 2 (CRUD & queries)
+- 06-base-repository-crud : 15 méthodes BaseRepository (findAll/findOne/findById/create/update/updateMany/delete/deleteMany/count/distinct/search/upsert/increment/addToSet/pull)
+- 07-filter-query-mongodb-like : 12 opérateurs FilterOperator ($eq/$ne/$gt/$gte/$lt/$lte/$in/$nin/$regex/$exists/$or/$and) + QueryOptions (sort/skip/limit/select) + SortDirection
+- 08-aggregate-pipeline : aggregate + AggregateStage + $match/$group/$sort/$limit + AggregateAccumulator (MongoDB requis — pipeline natif Mongo, SQL non supporté pour $group avec expression $field)
+- 09-findbyid-polymorphic : findById 4 formes (string/{id}/natural key/composite) + resolveLookup + UniqueIndexMatch + ResolvedLookup + OrmIntrospectionError (avec schemaName/availableFields) + extractRelId
+
+## SAMPLES À VENIR — Lots 3-5
 - Lot 3 (Relations & lifecycle) : RelationDef + lazy/eager + migration + soft-delete + audit + tx
 - Lot 4 (Plugins & sous-modules) : IPlugin + /register + /bridge JDBC
 - Lot 5 (Validator & erreurs) : validator + auto-fix + erreurs + EntityService + config + lifecycle
