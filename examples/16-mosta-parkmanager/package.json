@@ -30,6 +30,7 @@
     "seed:admin": "tsx --env-file=.env.local seeds/00_admin/seed-admin.ts",
     "seed:roles": "tsx --env-file=.env.local seeds/02_roles/seed-roles.ts",
     "seed:activities": "tsx --env-file=.env.local seeds/03_activities/seed-activities.ts",
+    "seed:rbac": "tsx --env-file=.env.local seeds/01_rbac/seed-rbac.ts",
     "seed:demo": "tsx --env-file=.env.local seeds/04_demo/seed-demo.ts"
   },
   "dependencies": {

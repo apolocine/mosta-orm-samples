@@ -107,6 +107,35 @@ if [ -z "${DB_CONFIG_LOCK:-}" ] && [ -t 0 ]; then
     echo "    SGBD_URI=$SGBD_URI"
     echo ""
   fi
+
+  # 3.6) Préfixe des tables — recommandé sur Oracle/MSSQL/HANA (schéma = user)
+  CURRENT_PREFIX=$(grep -E "^DB_TABLE_PREFIX=" .env.local | head -1 | cut -d= -f2- | tr -d '"' | tr -d "'")
+  echo "─── Préfixe des tables (DB_TABLE_PREFIX) ───"
+  echo "  Actuel : ${CURRENT_PREFIX:-(non défini)}"
+  case "$DIALECT" in
+    oracle|mssql|hana)
+      echo "  ⚠  Recommandé sur $DIALECT (schéma SQL = user de connexion)"
+      echo "     Plusieurs apps avec le même user partagent les mêmes tables."
+      ;;
+    *)
+      echo "  (optionnel sur $DIALECT — DB dédiée par défaut)"
+      ;;
+  esac
+  read -r -p "Définir/modifier le préfixe ? Ex. mp_ (Entrée pour garder « ${CURRENT_PREFIX:-aucun} ») : " NEW_PREFIX
+  if [ -n "$NEW_PREFIX" ]; then
+    # Crée la ligne si absente, sinon update
+    if grep -qE "^#*DB_TABLE_PREFIX=" .env.local; then
+      sed -i "s#^#*DB_TABLE_PREFIX=.*#DB_TABLE_PREFIX=$NEW_PREFIX#" .env.local
+    else
+      echo "DB_TABLE_PREFIX=$NEW_PREFIX" >> .env.local
+    fi
+    echo "  ✓ DB_TABLE_PREFIX=$NEW_PREFIX"
+  elif [ -n "$CURRENT_PREFIX" ]; then
+    echo "  → préfixe conservé : $CURRENT_PREFIX"
+  else
+    echo "  → pas de préfixe (tables aux noms bruts : users, clients, …)"
+  fi
+  echo ""
 fi
 
 # 4) Seed — interactif si TTY, sinon seed:admin par défaut.

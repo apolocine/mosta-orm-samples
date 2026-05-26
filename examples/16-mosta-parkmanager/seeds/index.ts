@@ -5,14 +5,20 @@ import path from 'path'
 const seedsDir = path.dirname(new URL(import.meta.url).pathname)
 
 const seeds = [
-  { name: '00_admin',     file: '00_admin/seed-admin.ts' },
-  { name: '02_roles',     file: '02_roles/seed-roles.ts' },
+  { name: '00_admin',      file: '00_admin/seed-admin.ts' },
+  { name: '02_roles',      file: '02_roles/seed-roles.ts' },
+  { name: '01_rbac',       file: '01_rbac/seed-rbac.ts' },
   { name: '03_activities', file: '03_activities/seed-activities.ts' },
-  { name: '04_demo',      file: '04_demo/seed-demo.ts' },
+  { name: '04_demo',       file: '04_demo/seed-demo.ts' },
 ]
 
-// SEED_FRESH=1 → le premier seed drop+recreate les tables (create-drop), les
-// suivants tournent en update pour ne pas effacer ce qui vient d'être inséré.
+// SEED_FRESH=1 → le premier seed drop+recreate les tables (strategy='create' :
+// drop scoped au boot via @mostajs/orm 2.3.0+, PAS de drop au shutdown). Les
+// suivants tournent en 'update' pour ne pas re-dropper ce qui vient d'être
+// inséré.
+// NB : on évite 'create-drop' ici car son shutdown hook drop les tables à
+// la fermeture de la connexion → les seeds suivants seraient lancés sur DB
+// vide.
 const fresh = process.env.SEED_FRESH === '1'
 const inheritedStrategy = process.env.SCHEMA_STRATEGY
 
@@ -21,7 +27,7 @@ console.log(`=== Mosta ParkManager — Seed Runner ${fresh ? '(FRESH RESET)' : '
 for (let i = 0; i < seeds.length; i++) {
   const seed = seeds[i]
   console.log(`\n--- Running ${seed.name} ---`)
-  const strategy = fresh && i === 0 ? 'create-drop' : (inheritedStrategy ?? 'update')
+  const strategy = fresh && i === 0 ? 'create' : (inheritedStrategy ?? 'update')
   try {
     execSync(`npx tsx ${path.join(seedsDir, seed.file)}`, {
       stdio: 'inherit',
