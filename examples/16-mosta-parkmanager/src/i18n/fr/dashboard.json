@@ -1,0 +1,23 @@
+{
+  "_author": "Dr Hamid MADANI drmdh@msn.com",
+  "title": "Tableau de bord",
+  "metrics": {
+    "visitorsPresent": "Visiteurs présents",
+    "activeSubscribers": "Abonnés actifs",
+    "todayUsages": "Utilisations aujourd'hui",
+    "lockersOccupied": "Casiers occupés"
+  },
+  "shortcuts": {
+    "title": "Accès rapide",
+    "newTicket": "Nouveau ticket",
+    "newTicketDesc": "Générer des tickets d'activité",
+    "scan": "Scanner",
+    "scanDesc": "Vérifier un ticket QR",
+    "newClient": "Nouveau client",
+    "newClientDesc": "Enregistrer un client",
+    "lockers": "Vestiaires",
+    "lockersDesc": "Gérer les casiers",
+    "reception": "Réception",
+    "receptionDesc": "Identifier client & créer tickets"
+  }
+}

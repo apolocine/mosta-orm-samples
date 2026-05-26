@@ -1,0 +1,8 @@
+<\!-- Author: Dr Hamid MADANI drmdh@msn.com -->
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="24" fill="#0EA5E9"/>
+  <path d="M96 40c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zm0 96c-22.091 0-40-17.909-40-40s17.909-40 40-40 40 17.909 40 40-17.909 40-40 40z" fill="white"/>
+  <path d="M96 64c-17.673 0-32 14.327-32 32s14.327 32 32 32 32-14.327 32-32-14.327-32-32-32zm0 48c-8.837 0-16-7.163-16-16s7.163-16 16-16 16 7.163 16 16-7.163 16-16 16z" fill="white" opacity="0.8"/>
+  <circle cx="96" cy="96" r="8" fill="white"/>
+  <text x="96" y="160" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="16" fill="white">SA</text>
+</svg>

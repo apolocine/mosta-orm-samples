@@ -1,0 +1,25 @@
+{
+  "_author": "Dr Hamid MADANI drmdh@msn.com",
+  "title": "Application Mobile Agent",
+  "subtitle": "Installer l'application PWA sur un appareil mobile",
+  "scanToInstall": "Scannez ce QR code depuis le téléphone de l'agent",
+  "instructions": {
+    "title": "Instructions d'installation",
+    "step1": "Scannez le QR code avec l'appareil photo du téléphone",
+    "step2": "Ouvrez le lien dans le navigateur (Chrome recommandé)",
+    "step3": "Connectez-vous avec les identifiants de l'agent",
+    "step4": "Appuyez sur \"Ajouter à l'écran d'accueil\" ou \"Installer\"",
+    "step5": "L'application est prête ! Lancez-la depuis l'écran d'accueil"
+  },
+  "features": {
+    "title": "Fonctionnalités",
+    "scan": "Scanner les tickets QR",
+    "faceVerify": "Vérification faciale",
+    "offline": "Fonctionne hors connexion",
+    "camera": "Accès caméra natif"
+  },
+  "url": "URL de l'application",
+  "copy": "Copier le lien",
+  "copied": "Lien copié !",
+  "openInBrowser": "Ouvrir dans le navigateur"
+}

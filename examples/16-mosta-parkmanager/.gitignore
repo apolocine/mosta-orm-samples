@@ -1,0 +1,67 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+/backup
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Certificats locaux (auto-générés par main.js)
+certificates
+*.pem
+*.key
+
+# Données locales (SQLite, dumps)
+data/
+
+# .mosta cache (apikeys, etc.)
+.mosta/
+
+# Docs propriétaires entreprise (cf. feedback_public_vs_private_repo)
+docs/
+test-scripts/
+tests-scripts/
+
+# Electron / build artifacts
+/bin/
+secu.zip
+traces.log
+
+# IDEs
+.vscode/
+.idea/

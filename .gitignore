@@ -15,6 +15,12 @@ examples/**/*.sqlite
 examples/**/*.sqlite-shm
 examples/**/*.sqlite-wal
 examples/**/dist/
+examples/**/.next/
+
+# Diagnostic / test scripts (entreprise) — jamais commit ni publish npm
+test-scripts/
+examples/**/test-scripts/
+docs/
 
 # Editor
 .vscode/

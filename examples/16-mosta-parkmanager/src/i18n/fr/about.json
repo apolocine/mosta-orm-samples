@@ -1,0 +1,128 @@
+{
+  "title": "À propos de Mosta ParkManager",
+  "subtitle": "Votre solution complète de gestion et contrôle d'accès pour centres de loisirs",
+  "mission": {
+    "title": "Notre Mission",
+    "description": "Mosta ParkManager est une plateforme de gestion intégrée conçue pour optimiser le contrôle d'accès et la gestion des centres de loisirs. Notre mission est de fournir une solution technologique moderne combinant identification par QR code, RFID et reconnaissance faciale pour sécuriser et fluidifier l'accès des clients."
+  },
+  "features": {
+    "access": {
+      "title": "Contrôle d'accès",
+      "description": "Identification multi-modale : QR code, RFID et reconnaissance faciale"
+    },
+    "clients": {
+      "title": "Gestion clients",
+      "description": "Gestion centralisée des abonnés et visiteurs occasionnels"
+    },
+    "facial": {
+      "title": "Reconnaissance faciale",
+      "description": "Vérification d'identité en temps réel via face-api.js"
+    },
+    "lockers": {
+      "title": "Gestion des casiers",
+      "description": "Attribution, suivi et libération des casiers automatisée"
+    },
+    "subscriptions": {
+      "title": "Abonnements & Quotas",
+      "description": "Gestion des formules d'abonnement avec quotas et renouvellements"
+    },
+    "reports": {
+      "title": "Rapports & Audit",
+      "description": "Rapports détaillés de fréquentation, audit trail et analyses"
+    }
+  },
+  "technical": {
+    "title": "Informations Techniques",
+    "frontend": {
+      "title": "Frontend",
+      "items": [
+        "Next.js 16 avec App Router",
+        "React 19 avec TypeScript",
+        "Tailwind CSS pour le design",
+        "NextAuth.js pour l'authentification",
+        "PWA (Progressive Web App)",
+        "Next-intl pour l'internationalisation"
+      ]
+    },
+    "backend": {
+      "title": "Backend",
+      "items": [
+        "API Routes Next.js",
+        "MongoDB avec Mongoose ODM",
+        "Système RBAC granulaire",
+        "Sessions sécurisées JWT",
+        "face-api.js (reconnaissance faciale)",
+        "Architecture MVC moderne"
+      ]
+    }
+  },
+  "architecture": {
+    "title": "Architecture Technique Avancée",
+    "performance": {
+      "title": "Performance",
+      "items": [
+        "Temps de réponse API <200ms",
+        "Indexation MongoDB optimisée",
+        "Code splitting automatique",
+        "PWA avec cache intelligent",
+        "Pagination efficace des données"
+      ]
+    },
+    "security": {
+      "title": "Sécurité",
+      "items": [
+        "RBAC multi-rôles",
+        "Sessions sécurisées JWT",
+        "Validation stricte des données",
+        "Reconnaissance faciale",
+        "Audit trail complet"
+      ]
+    },
+    "design": {
+      "title": "Architecture",
+      "items": [
+        "Pattern Repository/Service",
+        "API RESTful cohérente",
+        "Composants React modulaires",
+        "QR Code + RFID intégrés",
+        "Clean Code & SOLID principles"
+      ]
+    },
+    "achievements": {
+      "title": "Réalisations Techniques Clés",
+      "items": [
+        "Contrôle d'accès multi-modal (QR + RFID + Face)",
+        "PWA mobile pour les agents de contrôle",
+        "Reconnaissance faciale temps réel intégrée",
+        "Gestion automatisée des casiers et quotas",
+        "Système RBAC multi-rôles complet",
+        "Internationalisation complète (FR/EN/AR)"
+      ]
+    },
+    "metrics": {
+      "uptime": { "value": "99.9%", "label": "Disponibilité" },
+      "access": { "value": "RBAC", "label": "Contrôle accès" },
+      "mobile": { "value": "PWA", "label": "Mobile Ready" },
+      "roles": { "value": "3", "label": "Rôles utilisateur" }
+    }
+  },
+  "team": {
+    "title": "Équipe de Développement",
+    "moe": {
+      "name": "Dr MADANI",
+      "role": "MOE - Maîtrise d'Œuvre",
+      "description": "Direction technique et architecture du système"
+    },
+    "moa": {
+      "name": "SECULEC",
+      "role": "MOA - Maîtrise d'Ouvrage",
+      "description": "Spécifications fonctionnelles et coordination projet"
+    },
+    "collaboration": {
+      "title": "Collaboration Technique",
+      "description": "Ce projet résulte d'une collaboration étroite entre la maîtrise d'œuvre (MOE) pour l'expertise technique et l'architecture système, et la maîtrise d'ouvrage (MOA) pour la définition des besoins métier et la coordination projet."
+    }
+  },
+  "version": "Version 1.0.0 - Mosta ParkManager",
+  "credits": "Réalisé par Dr MADANI (MOE) et SECULEC (MOA)"
+}

@@ -1,8 +1,9 @@
 # @mostajs/orm-samples — fiche LLM
-> Runnable samples covering 100% of @mostajs/orm's public API. Copy-paste install per feature.
+> 17 runnable samples covering 100% of @mostajs/orm's public API + 1 end-to-end app showcase (sample 16 mosta-parkmanager).
 
-- Version: 0.2.0 · Licence: AGPL-3.0-or-later · Auteur: Dr Hamid MADANI <drmdh@msn.com>
-- Chemin: mostajs/mosta-orm-samples · Statut: Lots 1 & 2 livrés (samples 01-09)
+- Version: 0.3.0 · Licence: AGPL-3.0-or-later · Auteur: Dr Hamid MADANI <drmdh@msn.com>
+- Chemin: mostajs/mosta-orm-samples · Statut: Lots 1+2+3 + Lot transversal + showcase end-to-end (samples 01-17)
+- Peer-dep : @mostajs/orm >= 2.2.8 (les samples Lot 3 dépendent des fixes 2.2.x)
 
 ## RÔLE
 Pour chaque export documenté dans le llms.txt de @mostajs/orm, ce module fournit

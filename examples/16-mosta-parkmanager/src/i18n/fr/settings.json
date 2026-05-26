@@ -1,0 +1,35 @@
+{
+  "_author": "Dr Hamid MADANI drmdh@msn.com",
+  "title": "Paramètres",
+  "subtitle": "Configuration de l'application",
+  "sections": {
+    "faceRecognition": "Reconnaissance faciale",
+    "ticketPrinting": "Impression des tickets"
+  },
+  "faceRecognition": {
+    "enabled": "Activer la reconnaissance faciale",
+    "enabledDesc": "Active la détection et la vérification faciale dans l'application",
+    "threshold": "Seuil de correspondance",
+    "thresholdDesc": "Distance euclidienne maximale pour considérer un match (plus bas = plus strict)",
+    "requireFace": "Exiger un visage pour la capture",
+    "requireFaceDesc": "Le bouton Capturer est désactivé si aucun visage n'est détecté",
+    "autoVerify": "Vérification auto après scan",
+    "autoVerifyDesc": "Lance automatiquement la vérification faciale après un scan QR"
+  },
+  "ticketPrinting": {
+    "template": "Template d'impression",
+    "templateDesc": "Format de sortie pour l'impression des tickets",
+    "templates": {
+      "thermal80": "Thermique 80mm",
+      "thermal80Desc": "Imprimante thermique standard (80mm de large)",
+      "thermal58": "Thermique 58mm",
+      "thermal58Desc": "Imprimante thermique compacte (58mm de large)",
+      "a4": "A4 (plusieurs par page)",
+      "a4Desc": "Format A4 standard, plusieurs tickets par page"
+    },
+    "preview": "Aperçu"
+  },
+  "saved": "Paramètres sauvegardés",
+  "save": "Enregistrer",
+  "saving": "Enregistrement..."
+}

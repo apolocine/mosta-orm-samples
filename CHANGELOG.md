@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] — 2026-05-26
+
+### Added — Lot 3 + showcase end-to-end + sample transversal (+8 samples)
+
+**17 samples au total** (vs 9 en 0.2.0).
+
+#### Lot 3 — Relations & lifecycle (6 samples)
+
+- **10-relations-cascade** — 4 RelationType + `CascadeType` + `OnDeleteAction` + `mappedBy`/`joinColumn`/`through`/`orphanRemoval`
+- **11-lazy-vs-eager-fetch** — BREAKING 2.0 lazy default + `findByIdWithRelations` + `extractRelId` (R019/R021-safe)
+- **12-migration-diff** — `diffSchemas` + `DiffOperation` (14 variantes) + `generateMigrationSQL` + `strategy:'update'`
+- **13-soft-delete-native** — `softDelete` + `deletedAt` auto + `includeDeleted` + sparse partial unique (R003B)
+- **14-audit-by-fields** — `DEFAULT_AUDIT_BY_FIELDS` (8 champs) + wrapper audit minimal
+- **15-tx-manual-savepoints** — `$transaction(cb)` + `beginTx`/`commitTx`/`rollbackTx` + `SAVEPOINT` nested + isolation par dialect
+
+#### Lot transversal — Normalisation (1 sample)
+
+- **17-normalize-docs** — `normalizeDoc` + `normalizeDocs` + conversions par dialect + piège date SQLite (string ISO vs Date natif)
+
+#### ⭐ Sample showcase end-to-end (1 sample-application)
+
+- **16-mosta-parkmanager** — Application complète Next.js 16 + Electron de gestion d'un parc de loisirs/attractions.
+  **11 modules `@mostajs/*`** (orm, data-plug, auth, rbac, audit, scan, ui, settings, menu, init, net) intégrés.
+  14 entités. Multi-dialecte (SQLite/Postgres/MySQL/Oracle/MongoDB). Mode SaaS web + Electron desktop + hybride NET.
+  **Seul exemple public d'intégration end-to-end de l'écosystème.**
+
+### Changed
+
+- Peer-dep `@mostajs/orm` : `>=2.1.0` → `>=2.2.8` (les samples Lot 3 dépendent des fixes 2.2.x — duplicate FK, SQLite FK in-line, populate joinColumn, system columns, sparse partial unique, lazy refresh, Mongo index doublon)
+- Description package : reflète "17 samples + 1 showcase end-to-end"
+
+### Documentation
+
+- README enrichi : section ⭐ "À la une" sur sample 16, catalogue complet 17 samples par lot, emplacement screenshots
+- Sample 16 a son propre README détaillé (architecture, 11 modules, cascade config, 3 modes runtime, lien retour vers les 15 micro-samples)
+- Tous les samples Lot 3 documentés avec sections `What it shows` + pièges spécifiques
+
+### Liens
+
+- Spec ORM des anomalies fixées : `mostajs/mosta-orm/docs/ANOMALIES-LOT3-2026-05-25.md` (propriétaire entreprise)
+- `mostajs/mosta-orm` : 2.1.0 → 2.2.8 sur le même cycle (8 patches publiés)
+
+**Auteur** : Dr Hamid MADANI <drmdh@msn.com>
+
+---
+
 ## [0.2.0] — 2026-05-25
 
 ### Added — Lot 2 : CRUD & queries (4 samples)
