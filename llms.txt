@@ -3,7 +3,7 @@
 
 - Version: 0.3.0 · Licence: AGPL-3.0-or-later · Auteur: Dr Hamid MADANI <drmdh@msn.com>
 - Chemin: mostajs/mosta-orm-samples · Statut: Lots 1+2+3 + Lot transversal + showcase end-to-end (samples 01-17)
-- Peer-dep : @mostajs/orm >= 2.2.8 (les samples Lot 3 dépendent des fixes 2.2.x)
+- Peer-dep : @mostajs/orm >= 2.3.0 (les samples Lot 3 dépendent des fixes 2.2.x cumulés et de la feature DB_TABLE_PREFIX 2.3.0 utilisée par le showcase 16)
 
 ## RÔLE
 Pour chaque export documenté dans le llms.txt de @mostajs/orm, ce module fournit
@@ -37,8 +37,31 @@ npx @mostajs/orm-samples scaffold <feature> [dest]
 - 08-aggregate-pipeline : aggregate + AggregateStage + $match/$group/$sort/$limit + AggregateAccumulator (MongoDB requis — pipeline natif Mongo, SQL non supporté pour $group avec expression $field)
 - 09-findbyid-polymorphic : findById 4 formes (string/{id}/natural key/composite) + resolveLookup + UniqueIndexMatch + ResolvedLookup + OrmIntrospectionError (avec schemaName/availableFields) + extractRelId
 
-## SAMPLES À VENIR — Lots 3-5
-- Lot 3 (Relations & lifecycle) : RelationDef + lazy/eager + migration + soft-delete + audit + tx
+## SAMPLES LIVRÉS — Lot 3 (Relations & lifecycle)
+- 10-relations-cascade : 4 RelationType (oneToOne/oneToMany/manyToOne/manyToMany) + CascadeType + OnDeleteAction (cascade/setNull/restrict/noAction) + mappedBy/joinColumn/through/orphanRemoval. Démontre FK in-line SQLite (fix #6 2.2.1) et populate via joinColumn (fix #8 2.2.3).
+- 11-lazy-vs-eager-fetch : BREAKING 2.0 lazy default + findByIdWithRelations + extractRelId (R019/R021-safe). Montre 3 stratégies de chargement (lazy/eager opt-in/explicit findWithRelations) et le piège FK-as-string.
+- 12-migration-diff : diffSchemas + DiffOperation (14 variantes : ADD_FIELD, REMOVE_FIELD, CHANGE_TYPE, ADD_INDEX, …) + generateMigrationSQL + strategy:'update' addMissingColumns (fix #9 2.2.4 colonnes système retroactives).
+- 13-soft-delete-native : softDelete + auto deletedAt + includeDeleted (option 2.2.0) + sparse partial unique R003B (fix #10 2.2.5 — `WHERE deletedAt IS NULL` pour permettre la ré-insertion d'un email après soft-delete).
+- 14-audit-by-fields : DEFAULT_AUDIT_BY_FIELDS (8 champs : createdAt/updatedAt/createdBy/updatedBy/version/deletedAt/deletedBy/restoredBy) + wrapper audit minimal de seulement ~30 LOC pour journaliser les mutations.
+- 15-tx-manual-savepoints : $transaction(cb) + beginTx/commitTx/rollbackTx + SAVEPOINT nested + isolation par dialect (fix #5 2.2.0 — SQLite reçoit DEFERRED/IMMEDIATE/EXCLUSIVE, pas SET TRANSACTION ISOLATION LEVEL).
+
+## SAMPLE LIVRÉ — Lot transversal (Normalisation & conversions)
+- 17-normalize-docs : normalizeDoc + normalizeDocs (suppression `_id` Mongo, suppression `__v`, conservation `id`) + conversions par dialect (anomalie #11 documentée : `deserializeField('date', val)` retourne string ISO sur SQLite, Date natif sur PG/MySQL/Mongo).
+
+## SAMPLE LIVRÉ — Showcase end-to-end ⭐
+- 16-mosta-parkmanager : application complète Next.js 16 + Electron de gestion d'un parc de loisirs/attractions.
+  - 11 modules @mostajs/* intégrés : orm, data-plug, auth, rbac, audit, scan, ui, settings, menu, init, net.
+  - 14 entités modélisées (User, Role, Permission, Activity, Client, ClientAccess, Locker, RfidTag, Counter, Ticket, ScanLog, LockerEvent, Setting, AuditLog).
+  - 14 routes API Next.js REST.
+  - Bootstrap minimal `data-plug + config (cascade env) + orm` (zéro wizard de setup).
+  - Multi-dialecte SQLite/PostgreSQL/MySQL/Oracle/MongoDB — un seul code applicatif.
+  - 3 modes runtime : SaaS web (Next.js) / Desktop Electron / Hybride NET (data-plug bascule sur l'API mostajs/net si MOSTA_NET_URL défini).
+  - Auth NextAuth v5 + RBAC matriciel (roles × permissions par activité) + audit journalisé + scan QR/RFID + biométrie faciale.
+  - Démontre l'usage de **DB_TABLE_PREFIX** (cohabitation multi-apps sur DB Oracle/MSSQL/HANA partagé).
+  - Seeds dialect-agnostic (refactor conformité règle no-direct-SQL — tout via @mostajs/orm BaseRepository, zéro SQL brut).
+  - Captures d'écran : `examples/16-mosta-parkmanager/screenshots/` (login, dashboard, vestiaires, clients, fiche client carte abonné, agent mobile).
+
+## LOTS À VENIR — Lots 4-5
 - Lot 4 (Plugins & sous-modules) : IPlugin + /register + /bridge JDBC
 - Lot 5 (Validator & erreurs) : validator + auto-fix + erreurs + EntityService + config + lifecycle
 
@@ -69,13 +92,16 @@ sudo apt install <package>           # ou : brew install <package>
 - .env.example : variables minimales
 
 ## DÉPEND DE
-- @mostajs/orm ≥ 2.1.0 (peer)
-- Par sample : driver SGBD selon dialect (better-sqlite3 par défaut, pg/mysql2 en alternative)
+- @mostajs/orm ≥ 2.3.0 (peer) — Lot 3 + showcase 16 dépendent des fixes 2.2.x cumulés (anomalies #1-#13, #16) + de la feature DB_TABLE_PREFIX 2.3.0
+- Par sample : driver SGBD selon dialect (better-sqlite3 par défaut, pg/mysql2/oracledb/mongoose en alternative selon le sample)
+- Sample 16 uniquement : @mostajs/auth, @mostajs/rbac, @mostajs/audit, @mostajs/scan, @mostajs/ui, @mostajs/settings, @mostajs/menu, @mostajs/init, @mostajs/data-plug, @mostajs/net, next, electron
 
 ## PIÈGES
-- Les samples utilisent SQLite par défaut (zéro install) ; pour Postgres/MySQL, editer le .env.example commenté.
+- Les samples utilisent SQLite par défaut (zéro install) ; pour Postgres/MySQL/Oracle/Mongo, éditer le .env.example commenté.
 - Chaque sample crée sa DB tmp à la racine du sample (auto-cleanup avant chaque run).
 - Le scaffold copie un répertoire entier — penser à supprimer le tmp d'install après.
+- Sample 16 : `npm install --legacy-peer-deps` peut être nécessaire (peer-deps `@mostajs/rbac` ↔ `@mostajs/audit`) ; le script `./16-mosta-parkmanager.sh` gère ce flag automatiquement.
+- Sample 16 + Oracle thin mode 6.10 : risque résiduel `ERR_BUFFER_OUT_OF_BOUNDS` sous Turbopack (anomalie à traiter séparément hors Lot 3) — SQLite/Mongo restent les dialects de référence pour le showcase.
 
 ## RÉFÉRENCES
 - README.md · CHANGELOG.md

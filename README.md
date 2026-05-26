@@ -38,17 +38,17 @@ rm -rf ../tmp
 
 ### Captures d'écran
 
-> _Les captures sont sous `examples/16-mosta-parkmanager/screenshots/`
-> (gitignored pour le code source, mais intégrées dans le tarball npm
-> pour la galerie de samples)._
+> _10 captures réelles intégrées au tarball npm sous
+> `examples/16-mosta-parkmanager/screenshots/` — visibles directement
+> dans le [README détaillé du sample 16](examples/16-mosta-parkmanager/README.md#captures-décran)._
 
-- `screenshots/01-login.png` — Page de connexion
-- `screenshots/02-dashboard.png` — Tableau de bord
-- `screenshots/03-clients.png` — Gestion des visiteurs/abonnés
-- `screenshots/04-tickets.png` — Émission de tickets
-- `screenshots/05-agent-scan.png` — Station de scan QR/RFID
-- `screenshots/06-lockers.png` — Gestion des casiers
-- `screenshots/07-audit.png` — Journal d'audit
+| # | Écran | # | Écran |
+|---|---|---|---|
+| 1 | Login | 6 | Vestiaires — 80 casiers |
+| 2 | Tableau de bord (KPI) | 7 | Attribution TAG Serrure RFID |
+| 3 | Liste clients (visiteurs + abonnés) | 8 | Casier occupé — détail |
+| 4 | Fiche client (carte abonné + QR + grille accès) | 9 | Tags RFID — gestion du parc |
+| 5 | Édition client + photo native | 10 | Application Mobile Agent (QR install PWA) |
 
 Voir le [README détaillé du sample 16](examples/16-mosta-parkmanager/README.md)
 pour la documentation technique complète (11 modules, architecture, cascade config,
@@ -161,9 +161,16 @@ mostajs-orm-samples help [feature]             # aide globale ou par sample
 
 | Module | Version requise |
 |---|---|
-| `@mostajs/orm` | `^2.2.7` |
+| `@mostajs/orm` | `^2.3.0` |
 | `@mostajs/data-plug` (sample 16) | `^1.2.5` |
+| `@mostajs/auth` (sample 16) | `^2.0.2` |
+| `@mostajs/rbac` (sample 16) | `^1.4.0` |
 | Node.js | `>=18.0.0` |
+
+> Les samples du Lot 3 (10-15) et le showcase 16 dépendent des fixes cumulés
+> 2.2.x (anomalies Lot 3 documentées dans `mosta-orm/docs/ANOMALIES-LOT3-2026-05-25.md`,
+> propriétaire entreprise) et de la feature `DB_TABLE_PREFIX` introduite en 2.3.0
+> (cohabitation multi-apps sur DB Oracle/MSSQL/HANA partagé).
 
 ## Licence
 

@@ -61,6 +61,27 @@ Connectez-vous puis modifiez ce mot de passe.
 Naviguer sur <http://localhost:4567> → redirige vers `/login` → connectez-vous
 avec `admin@park.demo` + le password imprimé → accès au dashboard.
 
+## Captures d'écran
+
+> Captures réelles prises sur le sample tournant en local (Next.js dev mode,
+> SQLite, seed `complet` — 10 clients, 80 casiers, 10 tags RFID).
+
+| # | Écran | Aperçu |
+|---|---|---|
+| 1 | **Login** — `@mostajs/auth` + `@mostajs/ui` (NextAuth Credentials provider) | ![Login](screenshots/01-login.png) |
+| 2 | **Tableau de bord** — 4 KPI cards (visiteurs / abonnés / utilisations / casiers) + accès rapide. Repose sur `BaseRepository.count()` + agrégats légers. | ![Dashboard](screenshots/02-dashboard.png) |
+| 3 | **Liste des clients** — pagination, filtre par type (Visiteur/Abonné), recherche par nom/téléphone. `findAll` + `QueryOptions` (`sort`/`skip`/`limit`). | ![Clients list](screenshots/03-clients-list.png) |
+| 4 | **Fiche client** — informations personnelles, **carte d'abonné** générée dynamiquement (QR), grille d'accès 13 activités, TAG RFID actif, casier attribué. Démontre le populate via `joinColumn` (fix anomalie #8 ORM 2.2.3). | ![Client detail](screenshots/04-client-detail.png) |
+| 5 | **Édition client + photo** — formulaire `Client` complet avec capture caméra native (data-URI persisté en SQLite). | ![Client edit](screenshots/05-client-edit-photo.png) |
+| 6 | **Vestiaires** — 80 casiers groupés par zone (A/B/C), couleur par statut (disponible / occupé / maintenance / hors service). | ![Lockers](screenshots/06-lockers-overview.png) |
+| 7 | **Attribution TAG Serrure RFID** — saisie / scan de l'ID TAG RFID pour appairer la serrure du casier. | ![Locker RFID](screenshots/07-locker-rfid-assign.png) |
+| 8 | **Casier occupé** — détail d'un casier appairé (TAG, client, date) + actions (Libérer / Perte TAG / TAG Serrure). | ![Locker occupied](screenshots/08-locker-occupied.png) |
+| 9 | **Tags RFID** — gestion du parc de tags (10), filtre par statut, attribution à un client (les 3 premiers attribués à Samir/Sarah/Omar). | ![RFID tags](screenshots/09-rfid-tags.png) |
+| 10 | **Application Mobile Agent** — QR code pour installer la PWA scanner sur le téléphone d'un agent. `@mostajs/scan` + service-worker offline. | ![Agent mobile](screenshots/10-agent-mobile-qr.png) |
+
+> 📐 Toutes les captures ont 1140 × 690 px (zone utile dashboard) à l'exception
+> de l'écran de login (resolution viewport plein écran 1140 × 690 également).
+
 ## What it shows
 
 Ce sample est volontairement le **plus gros** de la galerie `@mostajs/orm-samples`
